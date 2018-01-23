@@ -1,6 +1,7 @@
 'use strict'
 
 const puppeteer = require('puppeteer')
+const devices = require('puppeteer/DeviceDescriptors');
 
 class Renderer {
   constructor(browser) {
@@ -14,6 +15,7 @@ class Renderer {
     }
 
     const page = await this.browser.newPage()
+    await page.emulate(devices['iPhone 6']); 
     await page.goto(url, gotoOptions)
     return page
   }
